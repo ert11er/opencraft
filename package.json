@@ -1,0 +1,25 @@
+{
+  "name": "opencraft",
+  "version": "1.0.0",
+  "description": "OpenCraft is an open source implementation of the popular game InfiniteCraft.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "build": "vite build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ert11er/opencraft.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ert11er/opencraft/issues"
+  },
+  "homepage": "https://github.com/ert11er/opencraft#readme",
+  "devDependencies": {
+    "npm-run-all": "^4.1.5",
+    "vite": "^5.0.11"
+  }
+}

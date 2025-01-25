@@ -26,7 +26,7 @@ init_db()
 
 @app.route('/')
 def serve_frontend():
-    return send_from_directory(app.static_folder, 'index.html')
+    return send_from_directory("./frontend", 'index.html')
 
 @app.route('/<path:path>')
 def send_js(path):
@@ -38,20 +38,12 @@ def craft_new_word():
     first_word = data.get('first')
     second_word = data.get('second')
 
-    # Here you would implement the logic to generate a new word
-    # For demonstration, we will just return a mock response
-    result = f"{first_word}-{second_word}"
-    emoji = "✨"  # Mock emoji
+    if not first_word or not second_word:
+        return jsonify({'error': 'Both words are required'}), 400
 
-    # Cache the result in the database
-    conn = sqlite3.connect('cache.db')
-    cursor = conn.cursor()
-    cursor.execute('INSERT INTO word_cache (first_word, second_word, result, emoji) VALUES (?, ?, ?, ?)',
-                   (first_word, second_word, result, emoji))
-    conn.commit()
-    conn.close()
-
-    return jsonify({'result': result, 'emoji': emoji})
+    # Your logic to craft a new word goes here
+    result = f"{first_word}-{second_word}"  # Example logic
+    return jsonify({'result': result, 'emoji': '✨'})
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=3000) 
